@@ -1,17 +1,18 @@
 import React, {Component} from "react"
+import Child from "./Child"
 
 //!1) Class based Component (CBC)
 
 //?In CBC, "render" is mandatory
 
-class App extends Component{
+    // class App extends Component{
 
-    render(){
-        console.log(this);
-        return <h2>CBC</h2>
-    }
-}
-export default App
+    //     render(){
+    //         console.log(this);
+    //         return <h2>CBC</h2>
+    //     }
+    // }
+    // export default App
 
 // Child(LHS) inherited Parent (RHS)
 
@@ -26,5 +27,15 @@ export default App
 // }
 
 // export default App
+
+//How to use one component inside another component?
+
+const App=()=>{
+    return(
+        <Child/>
+    )
+}
+
+export default App
 
 
