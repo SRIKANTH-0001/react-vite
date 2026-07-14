@@ -32,7 +32,11 @@ import Child from "./Child"
 
 const App=()=>{
     return(
-        <Child/>
+        <>
+        <h1>I'm Srikanth</h1>
+        <p>from qspiders reactjs course</p>
+        </>
+     
     )
 }
 
