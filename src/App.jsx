@@ -31,10 +31,20 @@ import Child from "./Child"
 //How to use one component inside another component?
 
 const App=()=>{
+
+    const name="SRIKANTH K";
+    const age=21;
+
     return(
         <>
-        <h1>I'm Srikanth</h1>
+        <h1>I'm {name}</h1>
+        <h3>My age is {21}</h3>
+
+        <br /><p>Closing tag is needed in reactjs</p> 
         <p>from qspiders reactjs course</p>
+
+        <label htmlFor="name">Name: </label>
+        <input id="name" type="text" />
         </>
      
     )
