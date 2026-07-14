@@ -1,12 +1,12 @@
 import React, {Component} from "react"
 import Child from "./Child"
+import Header from "./modulecss/header"
 
 const App=()=>{
 
     return(
         <>
-            <h1 id="head">I'm Srikanth</h1>
-           <div className="circle"></div>
+            <Header/>
         </>
      
     )
