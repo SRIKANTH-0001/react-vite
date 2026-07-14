@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#head{
+    font-size: 60px;
+    color: blue;
+    text-align: center;
+}
+
+.circle{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-color: aquamarine;
+    margin: 0 auto;
+}
