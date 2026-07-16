@@ -1,9 +1,14 @@
 import React from "react";
 
-const Child=()=>{
+const Child=(props)=>{
+    console.log(props);
+    
+
+    const {person:{pname,age},address_Info:{state,city}}=props;
+
     return(
         <div>
-            <h1>I'm Executed from child Component</h1>
+            <h1>i'm {pname} <span>And I'm {age}</span> from {city} and which is in {state} </h1>
         </div>
     )
 }

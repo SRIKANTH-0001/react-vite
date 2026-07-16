@@ -4,9 +4,11 @@ import Header from "./modulecss/header"
 
 const App=()=>{
 
+    const address={state:"Chennai",city:"Sholinganallur"};
+
     return(
         <>
-            <Header/>
+            <Child person={{pname:"SRIKANTH",age:21}} address_Info={address}/>
         </>
      
     )
