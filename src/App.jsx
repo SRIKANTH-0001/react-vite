@@ -2,15 +2,28 @@ import React, {Component} from "react"
 import Head1 from "./Child"
 import Header from "./modulecss/header"
 
-const App=()=>{
+const App=(args)=>{
 
-    const state="Chennai";
-    const city="Sholinganallur";
-    const situation ="fine";
+    console.log(args);
+
+    let personalDetails={
+        name:"Srikanth",
+        age:21,
+        address:"Chennai",
+        favColor:"Blue",
+        favFood:"Hot curd rice"
+    }
 
     return(
         <>
-            <Head1 person={{pname:"SRIKANTH",age:21}} address_Info={[state,city,situation]}/>
+            <Head1 pDetails={personalDetails}/>
+            <br />
+
+            <ul>
+                <li>I'm having the Briefs and the brand is {args.brand}</li>
+                <li>The size of it is {args.size} and the it's color is {args.color}</li>
+            </ul>
+
         </>
      
     )
