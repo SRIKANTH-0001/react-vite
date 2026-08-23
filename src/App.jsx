@@ -6,17 +6,12 @@ const App=(args)=>{
 
     console.log(args);
 
-    let personalDetails={
-        name:"Srikanth",
-        age:21,
-        address:"Chennai",
-        favColor:"Blue",
-        favFood:"Hot curd rice"
-    }
+    const fruits=["mango","apple","pineapple","grapes"]
+ 
 
     return(
         <>
-            <Head1 pDetails={personalDetails}/>
+            <Head1 favFruits={fruits}/>
             <br />
 
             <ul>
