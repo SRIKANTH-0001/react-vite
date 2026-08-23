@@ -1,14 +1,16 @@
 import React, {Component} from "react"
-import Child from "./Child"
+import Head1 from "./Child"
 import Header from "./modulecss/header"
 
 const App=()=>{
 
-    const address={state:"Chennai",city:"Sholinganallur"};
+    const state="Chennai";
+    const city="Sholinganallur";
+    const situation ="fine";
 
     return(
         <>
-            <Child person={{pname:"SRIKANTH",age:21}} address_Info={address}/>
+            <Head1 person={{pname:"SRIKANTH",age:21}} address_Info={[state,city,situation]}/>
         </>
      
     )
