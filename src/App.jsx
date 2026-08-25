@@ -6,14 +6,14 @@ const App=(args)=>{
 
     console.log(args);
 
-    const fruits=["mango","apple","pineapple","grapes"]
+   const address={state:"TamilNadu",city:"Chennai",place:"Sholinganallur",street:"TNHB"};
+
  
 
     return(
         <>
-            <Head1 favFruits={fruits}/>
+            <Head1 pAddress={address}/>
             <br />
-
             <ul>
                 <li>I'm having the Briefs and the brand is {args.brand}</li>
                 <li>The size of it is {args.size} and the it's color is {args.color}</li>
