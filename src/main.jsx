@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import "./style.css"
+import PaymentDetails from './App';
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-<>
-<App brand="Nike" size="30cm" color="blue"/>
-</>
-);
+ReactDOM.createRoot(document.getElementById('root')).render(<PaymentDetails/>);

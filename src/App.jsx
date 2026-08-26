@@ -1,31 +1,45 @@
-import React, {Component} from "react"
-import Head1 from "./Child"
-import Header from "./modulecss/header"
+function NotPaid(){
+    return <p>Access Denied!You didn't paid the fees for the Course!...</p>;
+}
+
+function Paid(props){
+    let Paid=props.isPaid;
+
+    //Method 1:
+
+    // if(Paid){
+    //     return <h1>You have Paid the fees for the Course!..</h1>;
+    // }
+    // return <NotPaid/>
+
+    //Method 2:
+
+    // return(
+    //         <h1>{Paid?`You have Paid the fees for the Course...`:<NotPaid/>}</h1>
+    // )
 
 
-const App=()=>{
+    //Method 3:
+    // it works if the paid is true otherwise nothing.Because, && operator executes if both are true!
+    
+    // return(
+    // <>
+    //      {Paid && <h1>{Paid?`You have Paid the fees for the Course...`:<NotPaid/>}</h1>}
+    // </>
+    // )
 
-    const shoot=(a,b)=>{
-        alert(`You have used the gun Named ${a}. The shot you did was amzing!...`);
-        confirm(b.type)
-    }
-    const mouseOver=(event)=>{
-        alert(`Why did you put the cursor over Me!😡`);
-        confirm(event.type)
-    }
+    
+}
 
-
+function PaymentDetails(){
     return(
         <>
-        <h1 onCopy={()=>alert('You copied Me!')}>Welcome to the Zooting game!</h1>
-        <button onClick={(b)=>shoot("Ak74",b)}>Hit me to shoot!</button>
-        <br />
-        <br />
-        <br />
-        <br /><br /><br />
-        <h1 style={{backgroundColor:"pink",position:"absolute"}}  onMouseOver={(event)=>mouseOver(event)}>Put the Arrow over Me!</h1>
+            <h1>Welcome to the USpiders Tutorials!....</h1>
+            <br />
+            <br />
+            <Paid isPaid={false}/>
         </>
     )
 }
 
-export default App;
+export default PaymentDetails;
