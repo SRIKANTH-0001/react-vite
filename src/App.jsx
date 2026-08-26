@@ -1,45 +1,41 @@
-function NotPaid(){
-    return <p>Access Denied!You didn't paid the fees for the Course!...</p>;
-}
+function App(){
 
-function Paid(props){
-    let Paid=props.isPaid;
+    const fruits=["Apple","Mango","Banana","Grapes"];
+    const vegitables=["Ladies Finger","Carrot","Beet Root","Capsicum"];
 
-    //Method 1:
-
-    // if(Paid){
-    //     return <h1>You have Paid the fees for the Course!..</h1>;
-    // }
-    // return <NotPaid/>
-
-    //Method 2:
-
-    // return(
-    //         <h1>{Paid?`You have Paid the fees for the Course...`:<NotPaid/>}</h1>
-    // )
+    const studentDetails=[
+        {id:1,name:"Srikanth",age:23},
+        {id:2,name:"Suresh",age:25},
+        {id:3,name:"Sara",age:22},
+    ];
 
 
-    //Method 3:
-    // it works if the paid is true otherwise nothing.Because, && operator executes if both are true!
-    
-    // return(
-    // <>
-    //      {Paid && <h1>{Paid?`You have Paid the fees for the Course...`:<NotPaid/>}</h1>}
-    // </>
-    // )
-
-    
-}
-
-function PaymentDetails(){
     return(
         <>
-            <h1>Welcome to the USpiders Tutorials!....</h1>
-            <br />
-            <br />
-            <Paid isPaid={false}/>
+            <h2 style={{backgroundColor:"darkblue",color:"white",position:"absolute"}}>list of Fruits!...</h2>
+            <br /><br />
+            <ul style={{backgroundColor:"lightgoldenrodyellow"}}>
+                {fruits.map((fruit)=>
+                    <li>{fruit}</li>)}
+            </ul>
+            <br /><br />
+
+            <h2 style={{backgroundColor:"darkred",color:"white",position:"absolute"}}>List of Vegetables!...</h2><br /><br />
+            <ul style={{backgroundColor:"lightseagreen"}}>
+                {vegitables.map((vegetable)=>
+                    <li>{vegetable}</li>)}
+            </ul>
+            <br /><br />
+
+        <h2 style={{backgroundColor:"darkorange",color:"white",position:"absolute"}}>List of Students!...</h2><br /><br />
+        <ul style={{backgroundColor:"lightseagreen"}}>
+                {studentDetails.map((student)=>
+                    <li key={student.id}>StudName: {student.name} //----// StudAge: {student.age}</li>)}
+        </ul>
+        <br /><br />
+
         </>
     )
 }
 
-export default PaymentDetails;
+export default App;
