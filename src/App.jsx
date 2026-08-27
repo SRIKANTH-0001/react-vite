@@ -1,41 +1,62 @@
-function App(){
+import { useState } from "react";
 
-    const fruits=["Apple","Mango","Banana","Grapes"];
-    const vegitables=["Ladies Finger","Carrot","Beet Root","Capsicum"];
+function StudForm(){
 
-    const studentDetails=[
-        {id:1,name:"Srikanth",age:23},
-        {id:2,name:"Suresh",age:25},
-        {id:3,name:"Sara",age:22},
-    ];
+    const [formData,setFormData]=useState({
+        regNum:"",
+        fullName:"",
+        Password:""
+    });
+    const [submittedData,setSubmittedData]=useState(null);
+    const [issubmitted,setIsSubmitted]=useState(false);
+
+    const handleChange=(e)=>{
+        const {name,value}=e.target;
+
+        setFormData((prev)=>({
+            ...prev,
+            [name]:value,
+        }))
+    }
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        setSubmittedData(formData);
+        setIsSubmitted(true);
+    }
 
 
     return(
         <>
-            <h2 style={{backgroundColor:"darkblue",color:"white",position:"absolute"}}>list of Fruits!...</h2>
-            <br /><br />
-            <ul style={{backgroundColor:"lightgoldenrodyellow"}}>
-                {fruits.map((fruit)=>
-                    <li>{fruit}</li>)}
-            </ul>
-            <br /><br />
+            {!issubmitted ? (
+                <form onSubmit={handleSubmit}>
+                <label >Enter Your Register Number: </label>
+                <input name="regNum" value={formData.regNum} onChange={handleChange} type="number" maxLength={8} required placeholder="Register Number"/>
+                <br /><br />
 
-            <h2 style={{backgroundColor:"darkred",color:"white",position:"absolute"}}>List of Vegetables!...</h2><br /><br />
-            <ul style={{backgroundColor:"lightseagreen"}}>
-                {vegitables.map((vegetable)=>
-                    <li>{vegetable}</li>)}
-            </ul>
-            <br /><br />
+                <label >Enter Your FullName: </label>
+                <input name="fullName" value={formData.fullName} onChange={handleChange} type="text" maxLength={15} placeholder="FullName"/>
+                <br />  <br />
 
-        <h2 style={{backgroundColor:"darkorange",color:"white",position:"absolute"}}>List of Students!...</h2><br /><br />
-        <ul style={{backgroundColor:"lightseagreen"}}>
-                {studentDetails.map((student)=>
-                    <li key={student.id}>StudName: {student.name} //----// StudAge: {student.age}</li>)}
-        </ul>
-        <br /><br />
+                <label >Enter the Password: </label>
+                <input name="Password" value={formData.password} onChange={handleChange} type="password" maxLength={6} placeholder="Password"/>
+                <br /><br />
 
+                <button type="submit">Submit</button>
+            </form>
+            ): (submittedData && (
+                <div>
+                    <h1>Student Entered Details!....</h1>
+                    <br /><br />
+                    <ol>
+                        <li>Register Number : {submittedData.regNum || ' '}</li>
+                        <li>Full Name : {submittedData.fullName || ' '}</li>
+                        <li>Password : {submittedData.Password || 'Sensitive data! So,It\'s protected'}</li>
+                    </ol>
+                </div>
+            ))}
         </>
     )
 }
 
-export default App;
+export default StudForm;
