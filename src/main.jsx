@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./style.css"
-import StudForm from './App';
+import MyForm from './App';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<StudForm/>);
+ReactDOM.createRoot(document.getElementById('root')).render(<MyForm/>);

@@ -1,53 +1,29 @@
 import { useState } from "react";
 
-function StudForm(){
+function MyForm(){
 
-    const [formData,setFormData]=useState({
-        regNum:"",
-        fullName:"",
-        Password:""
-    });
-    const [submittedData,setSubmittedData]=useState(null);
-    const [issubmitted,setIsSubmitted]=useState(false);
+    const [myText,setMyText]=useState("");
 
     const handleChange=(e)=>{
-        const {name,value}=e.target;
-        setFormData((prev)=>({
-            ...prev,
-            [name]:value,
-        }))
+        setMyText(e.target.value);
     }
 
-   const handleSubmit=(e)=>{
-        e.preventDefault();
-        setSubmittedData(formData);
-        setIsSubmitted(true);
-   }
-
+    const handleClick=()=>{
+        alert(`Here is the Given Story!..\n\n ${myText}`)
+    }
 
     return(
         <>
-            {!issubmitted ? (
-                <form onSubmit={handleSubmit}>
-                <label >Enter Your Register Number: </label>
-                <input name="regNum" value={formData.regNum} onChange={handleChange} type="number" maxLength={8} required placeholder="Register Number"/>
-                <br /><br />
+           <h1>Tell me One Random Story or any Interesting Story About you!...😊</h1>
+           <br /><br />
 
-                <label >Enter Your FullName: </label>
-                <input name="fullName" value={formData.fullName} onChange={handleChange} type="text" maxLength={15} placeholder="FullName"/>
-                <br />  <br />
+            <label >Write here : </label><br />
+           <textarea name="textarea" value={myText} onChange={handleChange}></textarea>
 
-                <label >Enter the Password: </label>
-                <input name="Password" value={formData.password} onChange={handleChange} type="password" maxLength={6} placeholder="Password"/>
-                <br /><br />
-
-                <button type="submit">Submit</button>
-            </form>
-            ):  (
-                alert(`Your Entered details are!.... \n Reg No: ${submittedData.regNum} \n FullName : ${submittedData.fullName} \n Password : ${submittedData.password || "It's Sensitive Data!.."}`)
-            )}
+            <br />
+            <button onClick={handleClick}>Done</button>
         </>
     )
 }
 
-export default StudForm;
+export default MyForm;
