@@ -12,18 +12,17 @@ function StudForm(){
 
     const handleChange=(e)=>{
         const {name,value}=e.target;
-
         setFormData((prev)=>({
             ...prev,
             [name]:value,
         }))
     }
 
-    const handleSubmit=(e)=>{
+   const handleSubmit=(e)=>{
         e.preventDefault();
         setSubmittedData(formData);
         setIsSubmitted(true);
-    }
+   }
 
 
     return(
@@ -44,17 +43,9 @@ function StudForm(){
 
                 <button type="submit">Submit</button>
             </form>
-            ): (submittedData && (
-                <div>
-                    <h1>Student Entered Details!....</h1>
-                    <br /><br />
-                    <ol>
-                        <li>Register Number : {submittedData.regNum || ' '}</li>
-                        <li>Full Name : {submittedData.fullName || ' '}</li>
-                        <li>Password : {submittedData.Password || 'Sensitive data! So,It\'s protected'}</li>
-                    </ol>
-                </div>
-            ))}
+            ):  (
+                alert(`Your Entered details are!.... \n Reg No: ${submittedData.regNum} \n FullName : ${submittedData.fullName} \n Password : ${submittedData.password || "It's Sensitive Data!.."}`)
+            )}
         </>
     )
 }
