@@ -1,77 +1,57 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function CheckBox(){
-
-    const [data,setData]=useState({
-        fullName:"SRIKANTH K",
-        Strawberry:true,
-        Ice:false,
-        BForest:true,
-        Honey:true
-
-    });
+function RadioBTN(){
+    const [ans,setAns]=useState('Mrunal');
 
     const handleChange=(e)=>{
-        const target=e.target;
-        const value=target.type==="checkbox"?target.checked:target.value;
-        const name=target.name;
-
-        setData(prev=>({...prev,[name]:value}));
+        setAns(e.target.value)
     }
 
-const handleSubmit = () => {
-    const selectedCakes = [];
-
-    if (data.Strawberry) selectedCakes.push("Strawberry Cake");
-    if (data.Ice) selectedCakes.push("Ice Cake");
-    if (data.BForest) selectedCakes.push("Black Forest Cake");
-    if (data.Honey) selectedCakes.push("Honey Cake");
-
-    let type = "";
-    if (selectedCakes.length === 1) {
-        type = selectedCakes[0];
-    } else if (selectedCakes.length > 1) {
-        const last = selectedCakes.pop();
-        type = selectedCakes.join(", ") + " and " + last;
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        alert(`You have selected Heroine as ${ans}`)
     }
-
-    alert(`The Person ${data.fullName} is needed following type of Cakes!...\n ${type}`);
-};
-
 
     return(
         <>
-            <h1>Welcome to the Cake Shop!....</h1>
-            <form onSubmit={handleSubmit}>
-                <label>What's your Name : </label>
-                <input type="text" maxLength={15} name="fullName" value={data.fullName} onChange={handleChange}/>
-                <br /><br />
+            <h1 style={{textAlign:"center"}}>Welcome to the place where 
+                You can share your Favourite heroine!</h1>
+            <br /><br />
 
-                <h3 >I want the Cake type as : &ensp;</h3>
+            <h3 >Choose your Favourite Heroine in Given options!</h3>
+            <br />
+
+            <form onSubmit={handleSubmit}>
+                <label>
+                <input type="radio" name="heroine" value="Mrunal Thakur" checked={ans==="Mrunal Thakur"} onChange={handleChange}/>
+                Mrunal Thakur
+                </label>
+                <br />
+                
+
+                <label>
+                    <input type="radio" name="heroine" value="Pooja Hegde" checked={ans==="Pooja Hegde"} onChange={handleChange}/>
+                    Pooja Hegde
+                </label>
                 <br />
 
-                <label >Strawberry Cake : &ensp;</label>
-                <input type="checkbox" name="Strawberry" checked={data.Strawberry} onChange={handleChange}/>
-                <br /><br />
+                <label>
+                    <input type="radio" name="heroine" value="Keerthy Suresh" checked={ans==="Keerthy Suresh"} onChange={handleChange}/>
+                    Keerthy Suresh
+                </label>
+                <br />
 
-                <label >Ice Cake : &ensp;</label>
-                <input type="checkbox"  name="Ice" checked={data.Ice} onChange={handleChange}/>
-                <br /><br />
+                <label>
+                    <input type="radio" name="heroine" value="Anika Surendar" checked={ans==="Anika Surendar"} onChange={handleChange}/>
+                    Anika Surendar
+                </label><br /><br />
 
-                <label >Black Forest : &ensp;</label>
-                <input type="checkbox"  name="BForest" checked={data.BForest} onChange={handleChange}/>
-                <br /><br />
+                <input type="submit"/>
 
-                <label >Honey Cake : &ensp;</label>
-                <input type="checkbox"  name="Honey" checked={data.Honey} onChange={handleChange}/>
-                <br /><br />
-
-                <input type="submit" />
-                
             </form>
-
+        
         </>
     )
 }
 
-export default CheckBox
+export default RadioBTN;
