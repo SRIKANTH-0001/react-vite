@@ -1,36 +1,57 @@
-import { useState } from "react"
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
-function Counter(){
-    const [count,setCount]=useState(0);
+function App(){
 
-    const incCounter=()=>{
-        setCount(count+1);
-    }
+    const [isOpen,setIsOpen]=useState(false);
 
-    const decCounter=()=>{
-        if(count>0){
-            setCount(count-1);
-        }
-        
-    }
-    const resetCounter=()=>{
-        const res=0;
-        setCount(res);
+    function Modal({isOpen,onClose,children}){
+
+        if(!isOpen) return null;
+
+        return createPortal(
+            <>
+                <div style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    top:"0",
+                    bottom:"0",
+                    right:"0",
+                    left:"0",
+                    position:"fixed",
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center"
+                }}>
+                
+                <div style={{
+                    backgroundColor:"white",
+                    padding:"20px",
+                    borderRadius:"10px",
+                    height:"150px",
+                }}>
+                    {children}
+                    <br />
+                    <button style={{backgroundColor:"green",color:"white",height:"33px",width:"80px",marginRight:"15px",marginLeft:"42%",fontSize:"25px",border:"2px",borderRadius:"10px"}} onClick={onClose}>Close</button>
+                </div>
+
+                </div>
+            </>,document.body
+        )
     }
 
     return(
         <>
-            <div style={{backgroundColor:"orange",height:"250px"}}></div>
-            <div style={{backgroundColor:"white"}}>
-                <h1 style={{textAlign:"center",color:"blue",fontSize:"150px"}}>{count}</h1>
+            <h1 style={{textAlign:"center"}}>Welcome to Online Recruitment!..</h1>
+            <button style={{backgroundColor:"green",color:"white",height:"33px",width:"180px",marginRight:"15px",marginTop:"15px",marginLeft:"42%",fontSize:"15px",border:"2px",borderRadius:"10px"}} onClick={()=>setIsOpen(true)}>Open To see Result</button>
 
-                <button style={{backgroundColor:"green",color:"white",height:"33px",width:"80px",marginRight:"15px",marginLeft:"42%",fontSize:"25px"}} onClick={()=>incCounter()}>+</button>
-                <button style={{backgroundColor:"red",color:"white",height:"33px",width:"80px",marginRight:"15px",fontSize:"25px"}} onClick={()=>decCounter()}>-</button>
-                <button style={{backgroundColor:"lightsteelblue",color:"white",height:"33px",width:"80px",marginRight:"10px",fontSize:"25px"}} onClick={()=>resetCounter()}>Reset</button>
-            </div>
-            <div style={{backgroundColor:"green",height:"500vh",marginTop:"10px"}}></div>
+
+            <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
+                <h1>You have Opened the Modal!</h1>
+                <br />
+                <p>Congrats!You have Selected in Interview and We'll let you know about Joining Date!...</p>
+            </Modal>
         </>
     )
 }
 
-export default Counter
+export default App;
