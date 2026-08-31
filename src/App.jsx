@@ -1,57 +1,36 @@
-import { useState } from "react";
+import { useState } from "react"
 
-function RadioBTN(){
-    const [ans,setAns]=useState('Mrunal');
+function Counter(){
+    const [count,setCount]=useState(0);
 
-    const handleChange=(e)=>{
-        setAns(e.target.value)
+    const incCounter=()=>{
+        setCount(count+1);
     }
 
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        alert(`You have selected Heroine as ${ans}`)
+    const decCounter=()=>{
+        if(count>0){
+            setCount(count-1);
+        }
+        
+    }
+    const resetCounter=()=>{
+        const res=0;
+        setCount(res);
     }
 
     return(
         <>
-            <h1 style={{textAlign:"center"}}>Welcome to the place where 
-                You can share your Favourite heroine!</h1>
-            <br /><br />
+            <div style={{backgroundColor:"orange",height:"250px"}}></div>
+            <div style={{backgroundColor:"white"}}>
+                <h1 style={{textAlign:"center",color:"blue",fontSize:"150px"}}>{count}</h1>
 
-            <h3 >Choose your Favourite Heroine in Given options!</h3>
-            <br />
-
-            <form onSubmit={handleSubmit}>
-                <label>
-                <input type="radio" name="heroine" value="Mrunal Thakur" checked={ans==="Mrunal Thakur"} onChange={handleChange}/>
-                Mrunal Thakur
-                </label>
-                <br />
-                
-
-                <label>
-                    <input type="radio" name="heroine" value="Pooja Hegde" checked={ans==="Pooja Hegde"} onChange={handleChange}/>
-                    Pooja Hegde
-                </label>
-                <br />
-
-                <label>
-                    <input type="radio" name="heroine" value="Keerthy Suresh" checked={ans==="Keerthy Suresh"} onChange={handleChange}/>
-                    Keerthy Suresh
-                </label>
-                <br />
-
-                <label>
-                    <input type="radio" name="heroine" value="Anika Surendar" checked={ans==="Anika Surendar"} onChange={handleChange}/>
-                    Anika Surendar
-                </label><br /><br />
-
-                <input type="submit"/>
-
-            </form>
-        
+                <button style={{backgroundColor:"green",color:"white",height:"33px",width:"80px",marginRight:"15px",marginLeft:"42%",fontSize:"25px"}} onClick={()=>incCounter()}>+</button>
+                <button style={{backgroundColor:"red",color:"white",height:"33px",width:"80px",marginRight:"15px",fontSize:"25px"}} onClick={()=>decCounter()}>-</button>
+                <button style={{backgroundColor:"lightsteelblue",color:"white",height:"33px",width:"80px",marginRight:"10px",fontSize:"25px"}} onClick={()=>resetCounter()}>Reset</button>
+            </div>
+            <div style={{backgroundColor:"green",height:"500vh",marginTop:"10px"}}></div>
         </>
     )
 }
 
-export default RadioBTN;
+export default Counter
