@@ -1,32 +1,40 @@
-import React from "react";
+function fruitNames(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(["Apple","Banana","Grapes","Mango"])
+        },1000);
+    });
+}
 
-const Child=(props)=>{
-
-    const {pAddress:{city,state,place,street}}=props
-
-    const changeColor=()=>{
-    document.getElementById('container').style.backgroundColor="red";
+const fetchFruits={
+    data:null,
+    read(){
+        if(this.data!==null) return this.data;
+        throw fruitNames().then(fruitName=>this.data=fruitName);
     }
+};
 
-    const timer=()=>setTimeout(()=>{
-        changeColor();
-    },3000);
+
+
+function SuspenseConcept(){
+
+    const fruitDetails=fetchFruits.read();
+
 
     return(
-    <>
-        <div id="container" style={{color:"white",fontSize:"17px",backgroundColor:"green"}}>
-             <h1>My Persional Details!</h1>
+        <>
+            <h1>Here,Yoou can get some Fruit Details!...</h1>
+            <br /><br />
+
             <ol>
-                <li>City Name: {city}</li>
-                <li>State Name: {state}</li>
-                <li>More details: {place},{street}</li>
+                {fruitDetails.map((fName,index)=>(
+                    <li key={index}>{fName}</li>
+                ))}
             </ol>
-        </div>
-        <br />
-        <button  style={{color:"white",fontSize:"17px",backgroundColor:"green",height:"27px",width:"100px"}} onClick={()=>timer()}>Click Me</button>
-        <br />
-    </>
+
+
+        </>
     )
 }
 
-export default Child;
+export default SuspenseConcept;
