@@ -1,40 +1,24 @@
-function fruitNames(){
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(["Apple","Banana","Grapes","Mango"])
-        },1000);
-    });
-}
+import './style.css'
 
-const fetchFruits={
-    data:null,
-    read(){
-        if(this.data!==null) return this.data;
-        throw fruitNames().then(fruitName=>this.data=fruitName);
-    }
-};
-
-
-
-function SuspenseConcept(){
-
-    const fruitDetails=fetchFruits.read();
-
+function FlowerNames(){
+    const flowers=["Lotus","Jasmine","Rose","Hibiscus","FireCracker"];
 
     return(
         <>
-            <h1>Here,Yoou can get some Fruit Details!...</h1>
-            <br /><br />
+            <div>
+                <h1 style={{textAlign:"center"}}>Welcome to Our Flower shop!...</h1>
+                <br /><br />
 
-            <ol>
-                {fruitDetails.map((fName,index)=>(
-                    <li key={index}>{fName}</li>
-                ))}
-            </ol>
+                <ol style={{color:"blue",fontSize:"30px",paddingLeft:"40px",border:"3px solid black"}}>
+                    {flowers.map((flower,index)=>(
+                        <li style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",alignItems:"center"}} key={index}>{flower}</li>
+                    ))}    
+                
+                </ol>
 
-
+            </div>
         </>
     )
 }
 
-export default SuspenseConcept;
+export default FlowerNames;
