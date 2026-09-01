@@ -10,9 +10,35 @@ function App(){
 
     const doctorNames=["Stephen","Gowtham","Mukesh","Mubarak"];
 
+    const buttonStyle={
+        height:"36px",
+        width:"180px",
+        backgroundColor:"green",
+        color:"white",
+        fontSize:"15px",
+        borderRadius:"10px"
+    }
+
+    const headStyle={
+        color:"white",
+        backgroundColor:"blue",
+        position:"absolute",
+        border:"2px solid blue",
+        padding:"4px",
+        borderRadius:"12px",
+        width:"250px",
+        textAlign:"center",
+        height:"40px"
+
+    }
+
     return(
         <>
-            <h1 style={{color:"green"}}>Prescripto</h1>
+            <h1 style={headStyle}>Prescripto App</h1>
+            <br />
+            <br />
+            <br />
+            <br />
             <p>Here,You can find All specialized doctors to book an appointment!</p>
 
             <ol>
@@ -25,7 +51,7 @@ function App(){
             <input type="number" name="dNumber" value={doctor.dNumber} max={4} maxLength={1} onChange={handleChange}/>
             <br /><br />
             <button type="submit" onClick={()=>alert(`${doctor <= 4 && doctor >= 1? `Your Appointment is Booked Successfully!..\nThe Doctor Number which you entered is ${doctor}\n The Doctor Name is :- ${doctorNames[doctor-1]}` : "You have Entered Wrong Doctor Number!\nPlease choose any among given one!"}`)}
-             style={{height:"36px",width:"180px",backgroundColor:"green",color:"white",fontSize:"15px",borderRadius:"10px"}}>Book an Appointement</button>
+             style={buttonStyle}>Book an Appointement</button>
         </>
     )
 }
