@@ -27,9 +27,9 @@ function App(){
             <input type="number" name="dNumber" value={doctor.dNumber} max={4} maxLength={1} onChange={handleChange}/>
             <br /><br />
             <button type="submit" onClick={()=>alert(`${doctor <= 4 && doctor >= 1? `Your Appointment is Booked Successfully!..\nThe Doctor Number which you entered is ${doctor}\n The Doctor Name is :- ${doctorNames[doctor-1]}` : "You have Entered Wrong Doctor Number!\nPlease choose any among given one!"}`)}
-            className={`${btnStyles.btn} ${btnStyles.primary}`}>Book an Appointement</button>
+            className={btnStyles.primary}>Book an Appointement</button>
 
-            <button className={`${btnStyles.btn} ${btnStyles.secondary}`} style={{marginLeft:"20px"}} onClick={()=>alert('The last Appointment Which You booked is Cancelled!')}>Cancel</button>
+            <button className={btnStyles.secondary} style={{marginLeft:"20px"}} onClick={()=>alert('The last Appointment Which You booked is Cancelled!')}>Cancel</button>
         </>
     )
 }

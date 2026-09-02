@@ -8,11 +8,13 @@
 }
 
 .primary{
+    composes:btn;
     background-color: green;
     color: white;
 }
 
 .secondary{
+    composes:btn;
     background-color: red;
     color: white;
 }
