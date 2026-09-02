@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './style.css'
+import btnStyles from './button.module.css';
 
 function App(){
 
@@ -15,9 +15,6 @@ function App(){
         <>
             <h1 id="head">Prescripto App</h1>
             <br />
-            <br />
-            <br />
-            <br />
             <p>Here,You can find All specialized doctors to book an appointment!</p>
 
             <ol>
@@ -30,7 +27,9 @@ function App(){
             <input type="number" name="dNumber" value={doctor.dNumber} max={4} maxLength={1} onChange={handleChange}/>
             <br /><br />
             <button type="submit" onClick={()=>alert(`${doctor <= 4 && doctor >= 1? `Your Appointment is Booked Successfully!..\nThe Doctor Number which you entered is ${doctor}\n The Doctor Name is :- ${doctorNames[doctor-1]}` : "You have Entered Wrong Doctor Number!\nPlease choose any among given one!"}`)}
-            id="btn">Book an Appointement</button>
+            className={`${btnStyles.btn} ${btnStyles.primary}`}>Book an Appointement</button>
+
+            <button className={`${btnStyles.btn} ${btnStyles.secondary}`} style={{marginLeft:"20px"}} onClick={()=>alert('The last Appointment Which You booked is Cancelled!')}>Cancel</button>
         </>
     )
 }

@@ -1,0 +1,20 @@
+.btn{
+    height:36px;
+    width:180px;
+    font-size:16px;
+    border-radius:7px;
+    margin-left:10px;
+    font-weight: 500;
+}
+
+.primary{
+    background-color: green;
+    color: white;
+}
+
+.secondary{
+    background-color: red;
+    color: white;
+}
+
+
