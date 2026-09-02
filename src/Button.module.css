@@ -1,22 +1,30 @@
-.btn{
+:global(.btn){
     height:36px;
     width:180px;
     font-size:16px;
     border-radius:7px;
     margin-left:10px;
     font-weight: 500;
-}
-
-.primary{
-    composes:btn;
-    background-color: green;
+    background-color: rgb(103, 0, 0);
     color: white;
 }
 
-.secondary{
+:global(.btn1){
+    height:36px;
+    width:145px;
+    font-size:16px;
+    border-radius:7px;
+    margin-left:10px;
+    font-weight: 500;
+    background-color: rgb(2, 77, 10);
+    color: white;
+}
+
+
+/* .secondary{
     composes:btn;
     background-color: red;
     color: white;
-}
+} */
 
 
