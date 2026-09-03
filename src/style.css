@@ -1,2 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    inset: -12px;
+    z-index: -1;
+    background: url('/shop1.jpg') center / cover no-repeat;
+    color: rgb(26, 26, 179);
+}
+
 
 

@@ -1,0 +1,20 @@
+.primary {
+    margin-top: 250px;
+    margin-left: 500px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.secondary {
+    background-color: white;
+    color: orangered;
+    font-size: 19px;
+    font-weight: 800;
+    padding: 20px;
+    border-radius: 10px;
+    height: 180px;
+
+}
