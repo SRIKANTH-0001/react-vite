@@ -1,20 +1,23 @@
 .primary {
-    margin-top: 250px;
-    margin-left: 500px;
-    position: absolute;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    padding: 40px 20px;
 }
 
 .secondary {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     color: orangered;
     font-size: 19px;
     font-weight: 800;
-    padding: 20px;
+    padding: 30px 40px;
     border-radius: 10px;
-    height: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
+.productList {
+    color: darkgreen;
+    font-size: 23px;
+    margin-left: 50px;
 }
