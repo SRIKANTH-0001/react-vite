@@ -1,42 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react"
+import './style.css'
 
 function App(){
 
-    const [state,setState]=useState("red");
-    const [favCarDetails,setFavCarDetails]=useState({
-        name:"ford",
-        price:"₹12 Lakh",
-        color:"blue",
-        type:"EV"
-    });
+    const [count,setCount]=useState(0);
 
-    const changeName=()=>{
-        setFavCarDetails((prev)=>{
-            return {...prev,name:"Hundai"};
-        })
-    }
+    useEffect(()=>{
+       const timer= setTimeout(()=>{
+            setCount((count)=>count+1);
+        },1000);
+        
+        return ()=>clearTimeout(timer)
+
+    },[]);
+
 
     return(
         <>
-        <h1 style={{textAlign:"center",color:"blue"}}>Just Simple examples for UseState Hook</h1>
-        <div style={{height:"300px",width:"300px",marginTop:"50px",marginLeft:"600px",backgroundColor:"lightgray",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-evenly"}}>
-            <h2 style={{textAlign:"center",color:"tomato"}}>{state}</h2>
-            <button style={{cursor:"pointer",fontSize:"30px",height:"40px",width:"100px",backgroundColor:"red",color:"white",borderRadius:"8px"}} onClick={()=>setState("black")}>
-                click
-            </button>
-        </div>
-        <br />
-        <div style={{backgroundColor:"lightgoldenrodyellow",height:"200px",width:"350px",marginLeft:"600px"}}>
-            <h1>Favourite Car details!</h1><br />
-            <ul style={{color:"rgb(62, 2, 6)",fontSize:"25px"}}>
-                <li>Name of Car: {favCarDetails.name}</li>
-                <li>Price of Car: {favCarDetails.price}</li>
-                <li>Color of Car: {favCarDetails.color}</li>
-                <li>Type of Car: {favCarDetails.type}</li>
-            </ul>
-            <br />
-            <button onClick={()=>changeName()} style={{color:"seagreen",height:"30px",marginTop:"20px",backgroundColor:"ButtonShadow",fontSize:"18px",cursor:"pointer"}}>Click to view My second fav Car Name</button>
-        </div>
+            <h1 style={{textAlign:"center",fontSize:"123px"}}>{count}</h1>
+            <br /><br />
+            <div style={{borderRadius:"10px",height:"100px",width:"550px",backgroundColor:"AccentColor",display:"flex",justifyContent:"space-evenly",alignItems:"center",margin:"0",marginLeft:"550px"}}>
+                <button style={{backgroundColor:"green"}} onClick={()=>setCount(count+1)}>+</button>
+                <button style={{backgroundColor:"red"}} onClick={()=>count>0?setCount(count-1):""}>-</button>
+                <button style={{backgroundColor:"blue"}} onClick={()=>setCount(0)}>Reset</button>
+            </div>
 
         </>
     )

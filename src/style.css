@@ -3,5 +3,21 @@
     padding: 0;
 }
 
+button{
+    height: 40px;
+    width: 90px;
+    padding: 1px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 7px;
+    border: 2px solid white;
+    color: white;
+}
+button:hover{
+    cursor: pointer;
+    font-size: 23px;
+}
+
 
 
