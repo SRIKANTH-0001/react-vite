@@ -1,36 +1,24 @@
-import { useState } from "react"
+import { createContext, useState } from "react"
+import Child from "./Child";
 
-function Component1(){
+export const UserContext=createContext();
 
-    const [name,setName]=useState("SRIKANTH");
+function App(){
+    const [name,setName]=useState("SRIKANTH K");
+    const fruits=["Apple","Banana","Grapes","Orange"]
 
     return(
         <>
-            <h1>My Name is {name}</h1>
-            <p>I Executed from C1</p>
-            <br />
-            <Component2 name={name}/>
-        </>
-    )
-}
-function Component2({name}){
-    return(
-        <>
-            <h1>Again,I'm {name}</h1>
-            <p>I Executed from C2</p>
-            <br />
-            <Component3 name={name}/>
-        </>
-    )
-}
-
-function Component3({name}){
-    return(
-        <>
-            <h1>So,Yeah I'm {name}</h1>
-            <p>I Executed from C3</p>
+            <UserContext.Provider value={fruits}>
+                <div>
+                    <h1>I'm executed from App component!...</h1>  
+                    <br />
+                    <h2>My Name is :- {name}</h2>  
+                </div> 
+                <Child/>
+            </UserContext.Provider>
         </>
     )
 }
 
-export default Component1
+export default App
