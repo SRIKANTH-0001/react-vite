@@ -1,42 +1,57 @@
-import { useEffect, useRef, useState } from "react";
+import { useReducer } from "react";
+import './style.css'
+
+const initialScore=[
+    {
+        id:1,
+        score:0,
+        name:"SRIKANTH K"
+    },
+    {
+        id:2,
+        score:0,
+        name:"GOWTHAM"
+    }
+]
+
+const reducer=(state,action)=>{
+    switch(action.type){
+        case "INCREASE":
+            return state.map((player)=>{
+                if(player.id===action.id){
+                    return {...player,score:player.score+1};
+                }else{
+                    return player;
+                }
+            })
+        default:
+            return state;
+    }
+}
 
 function App(){
 
-    const [inputVal, setInputVal] = useState("");
+    const [score,dispatch]=useReducer(reducer,initialScore);
 
-    const count=useRef(0);
-
-    useEffect(()=>{
-        count.current=count.current+1;
-    })
-
-    const input=useRef();
-
-    const handleClick=()=>{
-        input.current.focus();
+    const handleClick=(player)=>{
+         dispatch({type:"INCREASE",id:player.id});
     }
-
 
     return(
         <>
-            <label >Enter any Number : 
-                <input
-                    type="number" 
-                    value={inputVal}
-                    onChange={(e)=>setInputVal(e.target.value)}
-                />
-            </label>
-            <br />
-            <br />
-            <label >Enter Your age : 
-                <input type="number" ref={input}/>
-            </label><br /><br />
-
-            <button onClick={()=>handleClick()}>Focus</button>
-            <h3>State updates: {count.current}</h3>
-            <p>Type in the input to trigger a re-render.</p>
+            <div className="score-box">
+                {score.map((player)=>(
+                <div key={player.id} className="player-row">
+                    <label>
+                        <input type="button" value={player.name} onClick={()=>handleClick(player)}/>
+                    </label>
+                    {player.score}
+                </div>
+            ))}
+            </div>
+        
         </>
     )
 }
 
-export default App;
+export default App
