@@ -1,57 +1,45 @@
-import { useReducer } from "react";
-import './style.css'
+import React, { useCallback, useState } from "react";
 
-const initialScore=[
-    {
-        id:1,
-        score:0,
-        name:"SRIKANTH K"
-    },
-    {
-        id:2,
-        score:0,
-        name:"GOWTHAM"
-    }
-]
-
-const reducer=(state,action)=>{
-    switch(action.type){
-        case "INCREASE":
-            return state.map((player)=>{
-                if(player.id===action.id){
-                    return {...player,score:player.score+1};
-                }else{
-                    return player;
-                }
-            })
-        default:
-            return state;
-    }
-}
+const Button=React.memo(({onClick,text})=>{
+    alert(`The button ${text} is Rendered!`);
+    return <button onClick={onClick}>{text}</button>
+});
 
 function App(){
 
-    const [score,dispatch]=useReducer(reducer,initialScore);
+    const [count1,setCount1]=useState(0);
+    const [count2,setCount2]=useState(0);
+    
+    //This concept does the rendering 2 time even i clicked one time on btn1
 
-    const handleClick=(player)=>{
-         dispatch({type:"INCREASE",id:player.id});
-    }
+    // const handleClick1=()=>{
+    //     setCount1(count1+1);
+    // }
+    // const handleClick2=()=>{
+    //     setCount2(count2+1);
+    // }
+
+    //this is how to use useCallBack
+
+    const handleClick1=useCallback(()=>{
+        setCount1(count1+1);
+    },[count1]);
+
+    const handleClick2=useCallback(()=>{
+        setCount2(count2+1);
+    },[count2]);
+    
+    alert("Parent Rendered!");
 
     return(
         <>
-            <div className="score-box">
-                {score.map((player)=>(
-                <div key={player.id} className="player-row">
-                    <label>
-                        <input type="button" value={player.name} onClick={()=>handleClick(player)}/>
-                    </label>
-                    {player.score}
-                </div>
-            ))}
-            </div>
-        
+            <h1>Count1 : {count1}</h1>
+            <h1>Count2 : {count2}</h1>
+            
+            <Button onClick={handleClick1} text="Button 1" />
+            <Button onClick={handleClick2} text="Button 2" />
         </>
     )
 }
 
-export default App
+export default App;
