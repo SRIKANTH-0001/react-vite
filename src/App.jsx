@@ -1,43 +1,59 @@
-import React, { useCallback, useState } from "react";
+import { useMemo, useState } from "react";
 
-const Button=React.memo(({onClick,text})=>{
-    alert(`The button ${text} is Rendered!`);
-    return <button onClick={onClick}>{text}</button>
-});
+const expensiveCalculation=(num)=>{
+    console.log("Calculation is Started!...");
+
+    for(let i=0;i<1000000000;i++){
+        num+=1;
+    }
+    return num;
+}
 
 function App(){
 
-    const [count1,setCount1]=useState(0);
-    const [count2,setCount2]=useState(0);
+    const [count,setCount]=useState(0);
+    const [todo,setToDo]=useState([]);
+
+
+    //With useMemo Hook - Memoising the result of expensiveCalculation function 
+    const calculation=useMemo(()=>expensiveCalculation(count),[count]);
     
-    //This concept does the rendering 2 time even i clicked one time on btn1
+    //Without useMemo
 
-    // const handleClick1=()=>{
-    //     setCount1(count1+1);
-    // }
-    // const handleClick2=()=>{
-    //     setCount2(count2+1);
-    // }
+    // const calculation=expensiveCalculation(count);
 
-    //this is how to use useCallBack
+    const handleClick=()=>{
+        setToDo((prev)=>{
+            return [...prev,"New Todo is Added!"];
+        })
+    }
 
-    const handleClick1=useCallback(()=>{
-        setCount1(count1+1);
-    },[count1]);
+    const handleClickInc=()=>{
+        setCount((c)=>c+1);
+    }
 
-    const handleClick2=useCallback(()=>{
-        setCount2(count2+1);
-    },[count2]);
-    
-    alert("Parent Rendered!");
 
     return(
         <>
-            <h1>Count1 : {count1}</h1>
-            <h1>Count2 : {count2}</h1>
-            
-            <Button onClick={handleClick1} text="Button 1" />
-            <Button onClick={handleClick2} text="Button 2" />
+            <div>
+                {todo.map((item,index)=>{
+                    return <h3 key={index}>{item}</h3>
+                })}
+                <br /><br />
+                <button onClick={()=>handleClick()}>Add ToDo</button>
+            </div>
+            <br /><br />
+            <div>
+                <h2>Count : {count}</h2>
+                <br />
+                <button onClick={()=>handleClickInc()}>Inc Count</button>
+            </div>
+            <div>
+                <h2>Expensive calculation!</h2>
+                <br />
+                <h4>{calculation}</h4>
+            </div>
+
         </>
     )
 }
